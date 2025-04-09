@@ -3,13 +3,13 @@
     <h1>{{ hotel.name }}</h1>
     <p>{{ hotel.location }}</p>
     <p>{{ hotel.description }}</p>
-    <img [src]="hotel.featuredImage" alt="Hotel Featured Image" />
+    <img [routerLink]="['/home']" [src]="hotel.featuredImage" alt="Hotel Featured Image" />
   </div>
 
   <div class="rooms-section">
     <h2>Rooms</h2>
     <div *ngFor="let room of rooms" class="room-card">
-      <img src="{{ room.images.source }}" alt="image" />
+      <img src="{{ room.images[0].source }}" alt="image" />
       <h3>{{ room.name }}</h3>
       <p>{{ room.description }}</p>
       <p class="room-price">Price: ${{ room.pricePerNight }}</p>
