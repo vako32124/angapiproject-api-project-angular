@@ -1,0 +1,9 @@
+<h2 class="hotels-title">All Hotels</h2>
+<div class="hotels-container">
+  <div *ngFor="let hotel of hotels" class="hotel-card">
+    <img src="{{ hotel.featuredImage }}" alt="image" class="hotel-image" />
+    <h3 class="hotel-name">{{ hotel.name }}</h3>
+    <p class="hotel-address">{{ hotel.address }}</p>
+    <a [routerLink]="['/hotel', hotel.id]" class="view-hotel-link">View Hotel</a>
+  </div>
+</div>
