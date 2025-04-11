@@ -29,5 +29,5 @@ export class HotelDetailsComponent {
       this.rooms = res.filter((room: any) => room.hotelId === id);
     });
   }
-  }
+}
 

@@ -32,5 +32,9 @@ export class ApiservicesService {
   getRoomById(id: number): Observable<Room> {
     return this.http.get<Room>(`${this.baseUrl}/Rooms/GetRoom/${id}`);
   }
+
+ // getFilteredRooms(filterData: any): Observable<Room> {
+  //  return this.http.post<Room>(`${this.baseUrl}/Rooms/GetFiltered`,filterData)
+  //}
 }
 

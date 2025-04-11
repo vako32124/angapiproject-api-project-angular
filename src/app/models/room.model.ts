@@ -1,10 +1,10 @@
 export interface Room {
-  images: any;
-  pricePerNight: any;
+    images: any;
+    pricePerNight: any;
     id: number;
-  hotelId: number;
-   name: string;
-   description: string;
-   price: number;
-   image: string; 
+    hotelId: number;
+    name: string;
+    description: string;
+    price: number;
+    image: string; 
  }
