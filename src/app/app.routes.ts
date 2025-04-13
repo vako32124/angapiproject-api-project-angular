@@ -4,6 +4,7 @@ import { ErrorComponent } from './error/error.component';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { BookingComponent } from './booking/booking.component';
 
 export const routes: Routes = [
 
@@ -12,6 +13,7 @@ export const routes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent},
     { path: 'hotel/:id', component: HotelDetailsComponent },
+    { path: 'book', component: BookingComponent },
     { path: '**', component: ErrorComponent }
 
 ];

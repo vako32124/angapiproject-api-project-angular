@@ -13,7 +13,7 @@
       <h3>{{ room.name }}</h3>
       <p>{{ room.description }}</p>
       <p class="room-price">Price: ${{ room.pricePerNight }}</p>
-      <a class="btn-book">Book Now</a>
+      <a [routerLink]="['/book']" class="btn-book">Book Now</a>
     </div>
   </div>
 </div>
