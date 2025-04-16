@@ -1,10 +1,16 @@
-<form action="">
-    <h2>Book Your Room</h2>
-  
-    <input placeholder="Full name" type="text" required />
-    <input placeholder="ID number" type="text" required />
-    <input placeholder="Phone number" type="text" required />
-    <input type="date" required />
-    <input type="date" required />
-    <button routerLink="/home">Book Now</button>
-  </form>
+<form (ngSubmit)="onSubmit(bookingForm)" #bookingForm="ngForm">
+  <h2>Book Your Room</h2>
+
+  <input placeholder="Full name" type="text" name="fullName" [(ngModel)]="fullname" required />
+  <input placeholder="ID number" type="text" name="idNumber"  required />
+  <input placeholder="Phone number" type="text" name="phoneNumber"  required />
+
+  <label>Check-In Date:</label>
+  <input type="date" name="checkIn" [(ngModel)]="checkInDate" required />
+
+  <label>Check-Out Date:</label>
+  <input type="date" name="checkOut" [(ngModel)]="checkOutDate" required />
+
+  <button type="submit">Book Now</button>
+</form>
+

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hotel } from '../models/hotel.model';
 import { Room } from '../models/room.model';
+import { Booking } from '../models/booking';
 
 
 @Injectable({
@@ -33,8 +34,8 @@ export class ApiservicesService {
     return this.http.get<Room>(`${this.baseUrl}/Rooms/GetRoom/${id}`);
   }
 
- // getFilteredRooms(filterData: any): Observable<Room> {
-  //  return this.http.post<Room>(`${this.baseUrl}/Rooms/GetFiltered`,filterData)
-  //}
+  createBooking(booking: Booking): Observable<Booking> {
+    return this.http.post<Booking>(`${this.baseUrl}/api/Booking`, booking);
+  }
 }
 
