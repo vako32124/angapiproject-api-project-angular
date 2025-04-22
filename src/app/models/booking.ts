@@ -1,5 +1,4 @@
 export interface Booking {
-    hotelId: number;
     roomId: number;
     fullName: string;
     email: string;

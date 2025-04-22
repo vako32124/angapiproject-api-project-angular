@@ -30,7 +30,7 @@ export const routes: Routes = [
         import('./hotel-details/hotel-details.component').then(m => m.HotelDetailsComponent),
     },
     {
-      path: 'book',
+      path: 'book/:id',
       loadComponent: () =>
         import('./booking/booking.component').then(m => m.BookingComponent),
     },
