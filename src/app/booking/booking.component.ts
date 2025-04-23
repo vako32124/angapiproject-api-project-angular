@@ -3,38 +3,44 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { ApiservicesService } from '../services/apiservices.service';
+
 
 @Component({
   selector: 'app-booking',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.scss'
 })
 export class BookingComponent {
   checkInDate: string = '';
   checkOutDate: string = '';
-  fullname: string = '';
-  roomID: number | undefined; 
+  customerName: string = '';
+  roomID: number | undefined;
+  idNumber: string = ''; 
+  phoneNumber: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private api: ApiservicesService 
+  ) {}
 
   ngOnInit(): void {
-    
     this.route.paramMap.subscribe(params => {
       this.roomID = Number(params.get('id'));
-      console.log('Room ID:', this.roomID); 
     });
   }
 
   onSubmit(bookingForm: NgForm) {
     if (bookingForm.valid && this.roomID) {
-      let postobject = {
-        roomID: this.roomID, 
-        checkInDate: new Date(this.checkInDate),
-        checkOutDate: new Date(this.checkOutDate),
-        customerName: this.fullname,
-        customerId: "string",
-        customerPhone: "string"
+      let postObject = {
+          roomId: this.roomID,
+          checkInDate: this.checkInDate, 
+          checkOutDate: this.checkOutDate, 
+          customerName: this.customerName, 
+          phoneNumber: this.phoneNumber, 
+          customerId: this.idNumber, 
       };
 
       let checkIn = new Date(this.checkInDate);
@@ -49,13 +55,14 @@ export class BookingComponent {
         return;
       }
 
-      Swal.fire({
-        title: 'Booked Successfully!',
-        icon: 'success',
-      }).then(() => {
-        this.router.navigate(['/home']);
+      this.api.createBooking(postObject).subscribe(() => {
+        Swal.fire({
+          title: 'Booked Successfully!',
+          icon: 'success',
+        }).then(() => {
+          this.router.navigate(['/home']);
+        });
       });
     }
   }
 }
-

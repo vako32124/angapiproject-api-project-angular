@@ -1,9 +1,11 @@
 <form (ngSubmit)="onSubmit(bookingForm)" #bookingForm="ngForm">
   <h2>Book Your Room</h2>
 
-  <input placeholder="Full name" type="text" name="fullName" [(ngModel)]="fullname" required />
-  <input placeholder="ID number" type="text" name="idNumber"  required />
-  <input placeholder="Phone number" type="text" name="phoneNumber"  required />
+  <input placeholder="Full name" type="text" name="fullName" [(ngModel)]="customerName" required />
+
+  <input placeholder="ID number" type="text" name="idNumber" [(ngModel)]="idNumber" required />
+
+  <input placeholder="Phone number" type="text" name="phoneNumber" [(ngModel)]="phoneNumber" required />
 
   <label>Check-In Date:</label>
   <input type="date" name="checkIn" [(ngModel)]="checkInDate" required />
