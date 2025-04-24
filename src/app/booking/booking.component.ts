@@ -36,16 +36,16 @@ export class BookingComponent {
     if (bookingForm.valid && this.roomID) {
       let postObject = {
           roomId: this.roomID,
-          checkInDate: this.checkInDate, 
-          checkOutDate: this.checkOutDate, 
-          customerName: this.customerName, 
-          phoneNumber: this.phoneNumber, 
-          customerId: this.idNumber, 
+          checkInDate: this.checkInDate,
+          checkOutDate: this.checkOutDate,
+          customerName: this.customerName,
+          phoneNumber: this.phoneNumber,
+          customerId: this.idNumber,
       };
-
+ 
       let checkIn = new Date(this.checkInDate);
       let checkOut = new Date(this.checkOutDate);
-
+ 
       if (checkOut < checkIn) {
         Swal.fire({
           title: 'Invalid Date',
@@ -54,14 +54,41 @@ export class BookingComponent {
         });
         return;
       }
-
-      this.api.createBooking(postObject).subscribe(() => {
-        Swal.fire({
-          title: 'Booked Successfully!',
-          icon: 'success',
-        }).then(() => {
-          this.router.navigate(['/home']);
-        });
+ 
+      this.api.createBooking(postObject).subscribe({
+        next: (res) => {
+   
+          Swal.fire({
+            title: 'Booked Successfully!',
+            icon: 'success',
+          }).then(() => {
+            this.router.navigate(['/home']);
+          });
+        },
+        error: (err) => {
+     
+          if(err.error.text){
+            if(err.error.text.includes('successfully')){
+              Swal.fire({
+                title: 'Booked Successfully!',
+                icon: 'success',
+              }).then(() => {
+                this.router.navigate(['/home']);
+              });
+            }
+           
+          }
+          else {
+           
+            Swal.fire({
+              title: 'Booking Failed',
+              text: err.error?.message || 'An error occurred during booking',
+              icon: 'error',
+            });
+          }
+         
+         
+        }
       });
     }
   }

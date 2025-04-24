@@ -35,7 +35,8 @@ export class ApiservicesService {
   }
 
   createBooking(booking: Booking): Observable<Booking> {
-    return this.http.post<Booking>(`${this.baseUrl}/api/Booking`, booking);
-  }
+    return this.http.post<Booking>(`${this.baseUrl}/Booking`, booking);
+  }   
+ 
 }
 
