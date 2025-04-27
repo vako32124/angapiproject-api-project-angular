@@ -20,6 +20,11 @@ export const routes: Routes = [
         import('./about/about.component').then(m => m.AboutComponent),
     },
     {
+      path: 'booked',
+      loadComponent: () =>
+        import('./booked/booked.component').then(m => m.BookedComponent),
+    },
+    {
       path: 'contact',
       loadComponent: () =>
         import('./contact/contact.component').then(m => m.ContactComponent),
