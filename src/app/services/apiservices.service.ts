@@ -37,6 +37,11 @@ export class ApiservicesService {
   createBooking(booking: Booking): Observable<Booking> {
     return this.http.post<Booking>(`${this.baseUrl}/Booking`, booking);
   }   
+
+  deleteBooking(bookingId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/Booking/${bookingId}`);
+  }
+  
  
 }
 
