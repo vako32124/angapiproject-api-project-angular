@@ -1,6 +1,15 @@
 <div class="booked">
-    <h2>booked rooms</h2>
-    <div class="rooms" >
-        
+    <h2>Booked Rooms</h2>
+    <div class="rooms">
+      <div class="room" *ngFor="let booking of bookings">
+        <p>Customer: {{ booking.customerName }}</p>
+        <p>Room ID: {{ booking.roomId }}</p>
+        <p>Check-In: {{ booking.checkInDate }}</p>
+        <p>Check-Out: {{ booking.checkOutDate }}</p>
+        <p>Phone: {{ booking.phoneNumber }}</p>
+        <p>ID Number: {{ booking.customerId }}</p>
+  
+        <button>Delete Booking</button>
+      </div>
     </div>
-</div>
+  </div>

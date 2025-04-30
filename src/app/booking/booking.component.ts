@@ -62,6 +62,11 @@ export class BookingComponent {
             title: 'Booked Successfully!',
             icon: 'success',
           }).then(() => {
+            let existingBookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            existingBookings.push(postObject);
+            localStorage.setItem('bookings', JSON.stringify(existingBookings));
+  
+            
             this.router.navigate(['/home']);
           });
         },
@@ -73,6 +78,10 @@ export class BookingComponent {
                 title: 'Booked Successfully!',
                 icon: 'success',
               }).then(() => {
+                let existingBookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+                existingBookings.push(postObject);
+                localStorage.setItem('bookings', JSON.stringify(existingBookings));
+      
                 this.router.navigate(['/home']);
               });
             }
