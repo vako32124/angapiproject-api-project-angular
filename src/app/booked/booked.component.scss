@@ -10,12 +10,20 @@
       text-align: center;
       margin-bottom: 40px;
     }
+
+    .no-bookings {
+      font-size: 18px;
+      color: #777;
+      margin: auto;
+      text-align: center;
+    }
   
     .rooms {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
       padding: 0 10px;
+
   
       .room {
         background-color: #fff;

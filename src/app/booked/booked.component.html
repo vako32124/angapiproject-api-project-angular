@@ -1,5 +1,6 @@
 <div class="booked">
     <h2>Booked Rooms</h2>
+    <p class="no-bookings" *ngIf="bookings.length === 0">No bookings found...</p>
     <div class="rooms">
       <div class="room" *ngFor="let booking of bookings">
         <p>Customer: {{ booking.customerName }}</p>
@@ -12,3 +13,5 @@
       </div>
     </div>
   </div>
+
+  
