@@ -8,8 +8,7 @@
         <p>Check-Out: {{ booking.checkOutDate }}</p>
         <p>Phone: {{ booking.phoneNumber }}</p>
         <p>ID Number: {{ booking.customerId }}</p>
-  
-        <button>Delete Booking</button>
+        <button (click)="deleteBooking(booking)">Delete Booking</button>
       </div>
     </div>
   </div>
