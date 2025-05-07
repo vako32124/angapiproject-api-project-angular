@@ -69,4 +69,45 @@
       }
     }
   }
+
+  .delete-by-id {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  
+    input {
+      flex: 1;
+      padding: 10px 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s ease;
+  
+      &:focus {
+        border-color: #007bff;
+      }
+    }
+  
+    button {
+      padding: 10px 16px;
+      font-size: 16px;
+      color: white;
+      background-color: #dc3545;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
+  
   
