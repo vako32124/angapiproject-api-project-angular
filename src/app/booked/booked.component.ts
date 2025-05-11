@@ -53,25 +53,36 @@ export class BookedComponent {
 
   deleteBookingId: string = '';
 
-  deleteBookingById() {
-    this.api.deleteBooking(Number(this.deleteBookingId)).subscribe(
-      () => {
+
+  deleteBookingById(): void {
+    let bookingId = Number(this.deleteBookingId);
+  
+    if (!bookingId) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please enter a valid booking ID.',
+        icon: 'warning'
+      });
+      return;
+    }
+  
+    this.api.deleteBooking(bookingId).subscribe({
+      next: () => {
         Swal.fire({
           title: 'Deleted!',
-          text: 'Your booking has been deleted.',
+          text: 'Your booking has been successfully deleted.',
           icon: 'success'
         });
         this.deleteBookingId = '';
       },
-      (error) => {
+      error: (error) => {
         Swal.fire({
           title: 'Error!',
-          text: 'No booked dates found for the booking.',
+          text: 'Booking not found or could not be deleted.',
           icon: 'error'
         });
-        console.error('Error deleting booking:', error);
       }
-    );
+    });
   }
 
   

@@ -1,10 +1,12 @@
 <div class="booked">
     <h2>Booked Rooms</h2>
-   <!--- <p class="no-bookings" *ngIf="bookings.length === 0">No bookings found...</p> -->
+   
     <div class="delete-by-id">
       <input [(ngModel)]="deleteBookingId" placeholder="Enter Booking ID to delete" type="text">
       <button (click)="deleteBookingById()">Delete Booking by ID</button>
     </div>
+
+    <p class="no-bookings" *ngIf="bookings.length === 0">No bookings found...</p>
     
     <div class="rooms">
       <div class="room" *ngFor="let booking of bookings">

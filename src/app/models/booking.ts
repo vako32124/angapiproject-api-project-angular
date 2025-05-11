@@ -1,8 +1,10 @@
 export interface Booking {
-  roomId: number;
-  checkInDate: string; 
-  checkOutDate: string; 
+  roomID: number;
+  checkInDate: Date; 
+  checkOutDate: Date; 
+  totalPrice: number;
+  isConfirmed: boolean;
   customerName: string; 
-  phoneNumber: string; 
+  customerPhone: string; 
   customerId: string; 
 }

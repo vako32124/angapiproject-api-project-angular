@@ -15,9 +15,12 @@ export class HomeComponent {
   constructor(private api: ApiservicesService) {}
 
   ngOnInit(): void {
+
     this.api.getAllHotels().subscribe((res: any) => {
       console.log(res)
       this.hotels = res;
     });
   }
+
+
 }

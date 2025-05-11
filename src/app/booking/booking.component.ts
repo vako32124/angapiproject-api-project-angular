@@ -13,8 +13,8 @@ import { ApiservicesService } from '../services/apiservices.service';
   styleUrl: './booking.component.scss'
 })
 export class BookingComponent {
-  checkInDate: string = '';
-  checkOutDate: string = '';
+  checkInDate: Date = new Date();
+  checkOutDate: Date = new Date();
   customerName: string = '';
   roomID: number | undefined;
   idNumber: string = ''; 
@@ -35,12 +35,20 @@ export class BookingComponent {
   onSubmit(bookingForm: NgForm) {
     if (bookingForm.valid && this.roomID) {
       let postObject = {
-          roomId: this.roomID,
-          checkInDate: this.checkInDate,
-          checkOutDate: this.checkOutDate,
-          customerName: this.customerName,
-          phoneNumber: this.phoneNumber,
-          customerId: this.idNumber,
+        roomID: this.roomID,
+        checkInDate: this.checkInDate, 
+        checkOutDate: this.checkOutDate,
+        totalPrice: 100,
+        isConfirmed: true,
+        customerName: this.customerName,
+        customerPhone: '',
+        customerId: this.idNumber
+          // roomId: this.roomID,
+          // checkInDate: this.checkInDate,
+          // checkOutDate: this.checkOutDate,
+          // customerName: this.customerName,
+          // phoneNumber: this.phoneNumber,
+          // customerId: this.idNumber,
       };
  
       let checkIn = new Date(this.checkInDate);
