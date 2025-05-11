@@ -1,6 +1,6 @@
 <div class="booked">
     <h2>Booked Rooms</h2>
-    <p class="no-bookings" *ngIf="bookings.length === 0">No bookings found...</p>
+   <!--- <p class="no-bookings" *ngIf="bookings.length === 0">No bookings found...</p> -->
     <div class="delete-by-id">
       <input [(ngModel)]="deleteBookingId" placeholder="Enter Booking ID to delete" type="text">
       <button (click)="deleteBookingById()">Delete Booking by ID</button>
@@ -14,7 +14,7 @@
         <p>Check-Out: {{ booking.checkOutDate }}</p>
         <p>Phone: {{ booking.phoneNumber }}</p>
         <p>ID Number: {{ booking.customerId }}</p>
-       <!-- <button (click)="deleteBooking(booking)">Delete Booking</button> -->
+        <button (click)="deleteBooking(booking)">Delete Booking</button> 
       </div>
     </div>
   </div>
