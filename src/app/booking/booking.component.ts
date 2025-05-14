@@ -65,46 +65,45 @@ export class BookingComponent {
  
       this.api.createBooking(postObject).subscribe({
         next: (res) => {
-   
           Swal.fire({
-            title: 'Booked Successfully!',
+            title: `Booked Successfully!`,
+            text: `Booking ID: ${res['id']}`,
             icon: 'success',
           }).then(() => {
             let existingBookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-            existingBookings.push(postObject);
+            existingBookings.push({ ...postObject, id: res['id'] });
             localStorage.setItem('bookings', JSON.stringify(existingBookings));
-  
-            
+
             this.router.navigate(['/home']);
           });
         },
         error: (err) => {
-     
-          if(err.error.text){
-            if(err.error.text.includes('successfully')){
-              Swal.fire({
-                title: 'Booked Successfully!',
-                icon: 'success',
-              }).then(() => {
-                let existingBookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-                existingBookings.push(postObject);
-                localStorage.setItem('bookings', JSON.stringify(existingBookings));
-      
-                this.router.navigate(['/home']);
-              });
-            }
-           
-          }
-          else {
-           
+          console.log(err);
+
+          let text = err?.error?.text || '';
+
+          if (text.includes('successfully')) {
+            let match = text.match(/ID[:\s]*([0-9]+)/i);
+            let bookingId = match ? match[1] : 'Unknown';
+
+            Swal.fire({
+              title: 'Booked Successfully!',
+              icon: 'success',
+              text: `Booking ID: ${bookingId}`,
+            }).then(() => {
+              let existingBookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+              existingBookings.push({ ...postObject, id: bookingId });
+              localStorage.setItem('bookings', JSON.stringify(existingBookings));
+
+              this.router.navigate(['/home']);
+            });
+          } else {
             Swal.fire({
               title: 'Booking Failed',
               text: err.error?.message || 'An error occurred during booking',
-              icon: 'error',
+              icon:'error'
             });
           }
-         
-         
         }
       });
     }

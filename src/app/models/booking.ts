@@ -1,4 +1,5 @@
 export interface Booking {
+  [x: string]: any;
   roomID: number;
   checkInDate: Date; 
   checkOutDate: Date; 
