@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Hotel } from '../models/hotel.model';
 import { Room } from '../models/room.model';
 import { Booking } from '../models/booking';
+import { RegisterUser } from '../register/register.component';
 
 
 @Injectable({
@@ -41,6 +42,16 @@ export class ApiservicesService {
   deleteBooking(bookingId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/Booking/${bookingId}`, { responseType: 'text' });
   }
+
+  registerUser(user: RegisterUser): Observable<any> {
+    return this.http.post(` https://rentcar.stepprojects.ge/api/Users/register`, user);
+  }
+
+  loginUser(user: RegisterUser): Observable<any> {
+    return this.http.post(` https:rentcar.stepprojects.ge/api/Users/login      `, user);
+  }
+
+
 
 }
 

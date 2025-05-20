@@ -40,6 +40,16 @@ export const routes: Routes = [
         import('./booking/booking.component').then(m => m.BookingComponent),
     },
     {
+      path: 'login',
+      loadComponent: () =>
+        import('./log-in/log-in.component').then(m => m.LogInComponent),
+    },
+    {
+      path: 'register',
+      loadComponent: () =>
+        import('./register/register.component').then(m => m.RegisterComponent),
+    },
+    {
       path: '**',
       loadComponent: () =>
         import('./error/error.component').then(m => m.ErrorComponent),

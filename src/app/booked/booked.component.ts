@@ -8,7 +8,7 @@ import { Room } from '../models/room.model';
 
 @Component({
   selector: 'app-booked',
-  imports: [FormsModule, CommonModule,RouterLink],
+  imports: [FormsModule, CommonModule, ],
   templateUrl: './booked.component.html',
   styleUrl: './booked.component.scss'
 })
