@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Hotel } from '../models/hotel.model';
 import { Room } from '../models/room.model';
+import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-hotel-details',
@@ -16,8 +18,9 @@ export class HotelDetailsComponent {
   hotel: Hotel | undefined;
   rooms: Room[] = [];
   roomId: number | undefined;
+  router: any;
 
-  constructor(private route: ActivatedRoute, private api: ApiservicesService) {}
+  constructor(private route: ActivatedRoute, private api: ApiservicesService , private auth : AuthService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -39,7 +42,24 @@ export class HotelDetailsComponent {
       );
     });
   }
+
+  bookRoom() {
+    if (!this.auth.isLoggedIn()) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Please login first',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        this.router.navigatebyUrl(['/login']);
+      });
+      return;
+    }
   
+     this.router.navigate(['/booking']);
+  }
 
 }
+
+
+
 

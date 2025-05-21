@@ -1,0 +1,49 @@
+div {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  
+    h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #222;
+    }
+  
+    input {
+      width: 100%;
+      padding: 12px 16px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+  
+      &:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+    }
+  
+    button {
+      width: 100%;
+      padding: 12px 16px;
+      margin-top: 15px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  

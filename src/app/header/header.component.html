@@ -1,4 +1,4 @@
-<nav class="navbar">
+<!-- <nav class="navbar">
   <h1 routerLink="/home" class="logo">Hotel Booking</h1>
 
   <div class="burger" (click)="toggleMenu()">
@@ -14,5 +14,33 @@
     <li><a routerLink="/booked" routerLinkActive="active-link">Delete booking</a></li>
     <li><a routerLink="/login" routerLinkActive="active-link">logIn</a></li>
     <li><a routerLink="/register" routerLinkActive="active-link">register</a></li>
+  </ul>
+</nav> -->
+
+
+
+<nav class="navbar">
+  <h1 routerLink="/home" class="logo">Hotel Booking</h1>
+
+  <div class="burger" (click)="toggleMenu()">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <ul [class.active]="menuOpen()">
+    <li><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
+    <li><a routerLink="/about" routerLinkActive="active-link">About</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active-link">Contact</a></li>
+    <li><a routerLink="/booked" routerLinkActive="active-link">Delete booking</a></li>
+
+    <ng-container *ngIf="auth.authenticated() else loggedOut">
+      <li><a href="#" (click)="logout()">Logout</a></li>
+    </ng-container>
+
+    <ng-template #loggedOut>
+      <li><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
+      <li><a routerLink="/register" routerLinkActive="active-link">Register</a></li>
+    </ng-template>
   </ul>
 </nav>

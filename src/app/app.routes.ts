@@ -8,7 +8,7 @@ import { BookingComponent } from './booking/booking.component';
 
 export const routes: Routes = [
 
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
     {
       path: 'home',
       loadComponent: () =>
