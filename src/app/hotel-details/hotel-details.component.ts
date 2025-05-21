@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ApiservicesService } from '../services/apiservices.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ export class HotelDetailsComponent {
   roomId: number | undefined;
   router: any;
 
-  constructor(private route: ActivatedRoute, private api: ApiservicesService , private auth : AuthService) {}
+  constructor(private route: ActivatedRoute, private routerr: Router, private api: ApiservicesService , private auth : AuthService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -43,19 +43,19 @@ export class HotelDetailsComponent {
     });
   }
 
-  bookRoom() {
+  bookRoom() { console.log(this.auth.isLoggedIn());
     if (!this.auth.isLoggedIn()) {
       Swal.fire({
         icon: 'warning',
         title: 'Please login first',
         confirmButtonText: 'OK'
       }).then(() => {
-        this.router.navigatebyUrl(['/login']);
+        this.routerr.navigateByUrl('/login');
       });
       return;
     }
   
-     this.router.navigate(['/booking']);
+     this.routerr.navigateByUrl('/booking');
   }
 
 }

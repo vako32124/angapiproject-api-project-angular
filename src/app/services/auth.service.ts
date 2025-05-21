@@ -4,32 +4,37 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  isAuthorized = false;
-  authenticated = signal(false);
+
 
   constructor() {
     this.checkToken();
   }
 
+  isAuthorized = false
+
+  authenticated = signal(false)
+
   logIn() {
-    this.isAuthorized = true;
-    this.authenticated.set(true);
+    this.isAuthorized = true
+    this.authenticated.set(true)
   }
 
   logOut() {
-    localStorage.removeItem('token'); 
-    this.isAuthorized = false;
-    this.authenticated.set(false);
+    this.isAuthorized = false
+    this.authenticated.set(false)
   }
 
-  checkToken() {
-    if (localStorage.getItem('token')) {
-      this.isAuthorized = true;
-      this.authenticated.set(true);
-    } else {
-      this.isAuthorized = false;
-      this.authenticated.set(false);
-    }
+  isLoggedIn() {
+    return this.authenticated()
   }
+
+  checkToken(){
+    if(localStorage.getItem('token')){
+      this.isAuthorized = true
+    }
+    else{
+      this.isAuthorized = false
+    }
+  }  
 
 }
