@@ -43,7 +43,7 @@ export class HotelDetailsComponent {
     });
   }
 
-  bookRoom() { console.log(this.auth.isLoggedIn());
+  bookRoom(id:number) { console.log(this.auth.isLoggedIn());
     if (!this.auth.isLoggedIn()) {
       Swal.fire({
         icon: 'warning',
@@ -54,8 +54,8 @@ export class HotelDetailsComponent {
       });
       return;
     }
-  
-     this.routerr.navigateByUrl('/booking');
+ 
+     this.routerr.navigateByUrl(`/book/${id}`);
   }
 
 }

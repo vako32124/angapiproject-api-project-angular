@@ -48,9 +48,8 @@ export class ApiservicesService {
   }
 
   loginUser(user: RegisterUser): Observable<any> {
-    return this.http.post(` https:rentcar.stepprojects.ge/api/Users/login      `, user);
+    return this.http.post(`https://rentcar.stepprojects.ge/api/Users/login`, user);
   }
-
 
 
 }
