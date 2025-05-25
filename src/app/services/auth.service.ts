@@ -8,6 +8,7 @@ export class AuthService {
 
   constructor() {
     this.checkToken();
+    localStorage.getItem('token') ? this.authenticated.set(true) : this.authenticated.set(false);
   }
 
   isAuthorized = false
