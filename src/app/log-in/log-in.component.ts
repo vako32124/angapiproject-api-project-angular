@@ -26,8 +26,7 @@ export class LogInComponent {
     this.api.loginUser(this.registerUser).subscribe({
       next: (res) => {
         console.log(res);
-        localStorage.setItem('token', res.token);
-        this.auth.logIn();
+        this.auth.logIn(res.token);
 
         Swal.fire({
           icon: 'success',
@@ -37,7 +36,7 @@ export class LogInComponent {
           timerProgressBar: true,
           showConfirmButton: false
         }).then(() => {
-          this.router.navigateByUrl('/home'); 
+          this.router.navigateByUrl('/home');
         });
       },
       error: (err) => {
@@ -51,5 +50,6 @@ export class LogInComponent {
       }
     });
   }
-
 }
+
+

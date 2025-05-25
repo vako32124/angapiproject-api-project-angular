@@ -14,14 +14,16 @@ export class AuthService {
 
   authenticated = signal(false)
 
-  logIn() {
-    this.isAuthorized = true
-    this.authenticated.set(true)
+  logIn(token: string) {
+    localStorage.setItem('token', token);
+    this.isAuthorized = true;
+    this.authenticated.set(true);
   }
 
   logOut() {
-    this.isAuthorized = false
-    this.authenticated.set(false)
+    localStorage.removeItem('token');
+    this.isAuthorized = false;
+    this.authenticated.set(false);
   }
 
   isLoggedIn() {

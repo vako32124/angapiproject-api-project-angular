@@ -22,4 +22,5 @@ export class HeaderComponent {
   logout() {
     this.auth.logOut();
   }
+  
 }
